@@ -37,10 +37,10 @@ object App {
             hpcp_string: String,
             measurement: String,
             qualityFlag: String 
-            ) = line.split(",") 
+        ) = line.split(",") 
          
 
-        val s = toSample(
+        val s = Sample(
             station,
             stationName,
             elevation_string.toDouble,
@@ -49,9 +49,9 @@ object App {
             date,
             hpcp_string.toInt,
             measurement,
-            qualityFlag)
-
-        return ps
+            qualityFlag
+        )
+        return s
     }
  
     def main(args: Array[String]) = {
