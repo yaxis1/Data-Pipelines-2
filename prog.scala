@@ -15,6 +15,7 @@ object App {
 
     def readFile(path: String = PATH): List[String] = scala.io.Source.fromFile(new java.io.File(path)).getLines().toList
     
+
     def validateFile(data: List[String]) = {
         if (data(0) != EXPECTED_HEADER) {
             throw new Exception("INVALID HEADER") 
@@ -25,13 +26,25 @@ object App {
         println(data(1))
     }
     
-    def toSample(line: String): Sample ={ 
+    def toSample(line: String): Sample = {
+        val Seq(
+            station: String,
+            stationName: String,
+            elevation: Double,
+            latitute: Double,
+            longitude: Double,
+            date: String,
+            hpcp: Int,
+            measurement: String,
+            qualityFlag: String 
+            ) = line.split(",") 
 
 
     }
 
     def main(args: Array[String]) = {
         val data = readFile(PATH + "/badfile1.txt")
+
         validateFile(data) 
         processFile(data)}
 }
