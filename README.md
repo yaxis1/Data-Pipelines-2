@@ -1,0 +1,2 @@
+# scalaproj
+ Scala usecase
