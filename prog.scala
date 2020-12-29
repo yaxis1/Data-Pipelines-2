@@ -55,16 +55,21 @@ object App {
         return s
     }
 
-    //capitalize header
+    //capitalize single word
     def toPascalCaseSingle(x: String): String = x(0).toString.capitalize + x.substring(1).toLowerCase()
-    //remove _ from header
-    def toPascalCase(y: String): String = y.split("_").map(toPascalCaseSingle).mkString 
 
+    //mapping capitalize function to multiple words seperated by _ and space 
+    def toPascalCase(y: String): String = y.split("[ _]").map(toPascalCaseSingle).mkString 
+    
+    //mapping toPascalCase function to entire header string.
+    def headertopascal(header: String):String = header.split(",").map(toPascalCase).mkString(",")
 
  
     def main(args: Array[String]) = {
         val data = readFile(PATH + "/badfile1.txt")
         validateFile(data) 
-        processFile(data)}
+        processFile(data)
+        headertopascal(data(0))
+    }
 }
 
