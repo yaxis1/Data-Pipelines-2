@@ -19,6 +19,7 @@ object App {
         if (data(0) != EXPECTED_HEADER) {
             throw new Exception("INVALID HEADER") 
         } 
+        else {println("File is validated")}
     }
 
     def processFile(data: List[String]) = {
@@ -52,6 +53,16 @@ object App {
             qualityFlag
         )
         return s
+    }
+
+    //function that takes header_original and returns without _ 
+    def cas(x: Array[String]) : Any = { 
+        
+        /* for (x <- 0 until (x.length)) {
+            println(x(x)) */
+        }
+
+
     }
  
     def main(args: Array[String]) = {
