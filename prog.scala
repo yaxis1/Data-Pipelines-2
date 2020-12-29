@@ -25,6 +25,7 @@ object App {
         println(data(1))
     }
     
+    //function takes a "line" i.e first line from "data" and returns "Sample" object
     def toSample(line: String): Sample = {
         val Array(
             station: String,
@@ -39,7 +40,7 @@ object App {
             ) = line.split(",") 
          
 
-        val s = Sample(
+        val s = toSample(
             station,
             stationName,
             elevation_string.toDouble,
