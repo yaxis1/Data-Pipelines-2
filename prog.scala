@@ -55,15 +55,12 @@ object App {
         return s
     }
 
-    //function that takes header_original and returns without _ 
-    def cas(x: Array[String]) : Any = { 
-        
-        /* for (x <- 0 until (x.length)) {
-            println(x(x)) */
-        }
+    //capitalize header
+    def toPascalCaseSingle(x: String): String = x(0).toString.capitalize + x.substring(1).toLowerCase()
+    //remove _ from header
+    def toPascalCase(y: String): String = y.split("_").map(toPascalCaseSingle).mkString 
 
 
-    }
  
     def main(args: Array[String]) = {
         val data = readFile(PATH + "/badfile1.txt")
