@@ -23,10 +23,14 @@ object dataset {
 def convertToDataset(csvData: String): List[String] = {
     
     //Converting string to list inorder to be able to split header from rows, also lists are great!
-    
     val dataa = data.split("\\n").map(_.trim).toList
 
-    dataa    
+    //converting to rdd
+    val rdd = spark.sparkContext.parallelize(dataa)
+
+    val dfFromRDD1 = rdd.toDF(rdd(0))
+
+    HEADER = "STATION,STATION_NAME,ELEVATION,LATITUDE,LONGITUDE,DATE,HPCP,Measurement Flag,Quality Flag"
 }
 
 
