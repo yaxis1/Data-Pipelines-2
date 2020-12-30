@@ -14,13 +14,11 @@ def normalizeHeader(df: DataFrame): DataFrame = {
 
     
         val currentField = fieldNames(i)
-        val updatedFiledName = toPascalCase(currentField)
+        val updatedFiledName = headertopascal(currentField)
 
-        if (currentField!= updatedFiledName) {
+        if (currentField != updatedFiledName) {
             tempDf = tempDf.withColumnRenamed(currentField,updatedFiledName)
 
-        }
-    
-    
+        } } 
+    tempDf
     }
-}
