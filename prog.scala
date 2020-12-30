@@ -9,6 +9,18 @@ case class Sample(
     measurement: String,
     qualityFlag: String )
 
+case class SAMPLE(
+    Station: String,
+    StationName: String,
+    Elevation: Double,
+    Latitude: Double,
+    Longitude: Double,
+    Date: String,
+    Hpcp: Int,
+    MeasurementFlag: String,
+    QualityFlag: String )
+
+
 object App {
     val PATH = "C:/Users/verce/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/home/starman/scala"
     val EXPECTED_HEADER = "STATION,STATION_NAME,ELEVATION,LATITUDE,LONGITUDE,DATE,HPCP,Measurement Flag,Quality Flag"
