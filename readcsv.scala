@@ -6,6 +6,8 @@ def toPascalCase(y: String): String = y.split("[ _]").map(toPascalCaseSingle).mk
     //mapping toPascalCase function to entire header string.
 def headertopascal(header: String):String = header.split(",").map(toPascalCase).mkString(",")
 
+//DataFrame requires spark-shell and org.apache.spark.sql.DataFrame to be imported
+
 def normalizeHeader(df: DataFrame): DataFrame = {
 
     val fieldNames = df.schema.fieldNames
@@ -18,7 +20,8 @@ def normalizeHeader(df: DataFrame): DataFrame = {
 
         if (currentField != updatedFiledName) {
             tempDf = tempDf.withColumnRenamed(currentField,updatedFiledName)
-
         } } 
+
     tempDf
     }
+
