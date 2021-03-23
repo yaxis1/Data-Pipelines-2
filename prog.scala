@@ -7,7 +7,7 @@ case class Sample(
     date: String,
     hpcp: Int,
     measurement: String,
-    qualityFlag: String )
+    qualityFlag: String)
 
 case class SAMPLE(
     Station: String,
@@ -86,4 +86,5 @@ object App {
         headertopascal(data(0))
     }
 }
+
 

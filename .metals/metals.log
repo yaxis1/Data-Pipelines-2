@@ -3761,3 +3761,127 @@ Feb 26, 2021 6:06:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notif
 INFO: Unsupported notification method: $/setTraceNotification
 Feb 26, 2021 6:06:14 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 INFO: Unsupported notification method: $/setTraceNotification
+case class Sample(
+    station: String,
+    stationName: String,
+    elevation: Double,
+    latitute: Double,
+    longitude: Double,
+    date: String,
+    hpcp: Int,
+    measurement: String,
+    qualityFlag: String)
+
+case class SAMPLE(
+    Station: String,
+    StationName: String,
+    Elevation: Double,
+    Latitude: Double,
+    Longitude: Double,
+    Date: String,
+    Hpcp: Int,
+    MeasurementFlag: String,
+    QualityFlag: String )
+
+
+object App {
+    val PATH = "/home/starman/scala"
+    
+    //"C:/Users/verce/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/home/starman/scala"
+    val EXPECTED_HEADER = "STATION,STATION_NAME,ELEVATION,LATITUDE,LONGITUDE,DATE,HPCP,Measurement Flag,Quality Flag"
+
+    def readFile(path: String = PATH): List[String] = scala.io.Source.fromFile(new java.io.File(path)).getLines().toList
+    
+    def validateFile(data: List[String]) = {
+        if (data(0) != EXPECTED_HEADER) {
+            throw new Exception("INVALID HEADER") 
+        } 
+        else {println("File is validated")}
+    }
+
+    def processFile(data: List[String]) = {
+        println(data(1))
+    }
+    
+    //function takes a "line" i.e first line from "data" and returns "Sample" object
+    def toSample(line: String): Sample = {
+        val Array(
+            station: String,
+            stationName: String,
+            elevation_string: String,
+            latitute_string: String,
+            longitude_string: String,
+            date: String,
+            hpcp_string: String,
+            measurement: String,
+            qualityFlag: String 
+        ) = line.split(",") 
+         
+
+        val s = Sample(
+            station,
+            stationName,
+            elevation_string.toDouble,
+            latitute_string.toDouble,
+            longitude_string.toDouble,
+            date,
+            hpcp_string.toInt,
+            measurement,
+            qualityFlag
+        )
+        return s
+    }
+
+    //capitalize single word
+    def toPascalCaseSingle(x: String): String = x(0).toString.capitalize + x.substring(1).toLowerCase()
+
+    //mapping capitalize function to multiple words seperated by _ and space 
+    def toPascalCase(y: String): String = y.split("[ _]").map(toPascalCaseSingle).mkString 
+    
+    //mapping toPascalCase function to entire header string.
+    def headertopascal(header: String):String = header.split(",").map(toPascalCase).mkString(",")
+
+ 
+    def main(args: Array[String]) = {
+        val data = readFile(PATH + "/badfile1.txt")
+        validateFile(data) 
+        processFile(data)
+        headertopascal(data(0))
+    }
+}
+
+
+
+Mar 07, 2021 6:54:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleNotification
+WARNING: Notification threw an exception: {
+  "jsonrpc": "2.0",
+  "method": "metals/didFocusTextDocument",
+  "params": "conflictResolution:/c%3A/Users/verce/AppData/Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/home/starman/scala/prog.scala?%7B%22scheme%22%3A%22file%22%2C%22query%22%3A%22%22%7D"
+}
+java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:67)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.notify(GenericEndpoint.java:152)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleNotification(RemoteEndpoint.java:220)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:187)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor8.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint.lambda$null$0(GenericEndpoint.java:65)
+	... 11 more
+Caused by: java.nio.file.FileSystemNotFoundException: Provider "conflictResolution" not installed
+	at java.nio.file.Paths.get(Paths.java:147)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:445)
+	at scala.meta.internal.metals.MetalsEnrichments$XtensionString.toAbsolutePath(MetalsEnrichments.scala:442)
+	at scala.meta.internal.metals.MetalsLanguageServer.didFocus(MetalsLanguageServer.scala:982)
+	... 15 more
+
+[0m2021.03.07 18:54:47 INFO  shutting down Metals[0m
