@@ -1,7 +1,9 @@
+```scala
 import org.apache.spark.sql._
 import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions._
-
+```
+```scala
 case class PrecipitationSample(
     Station: String, 
     StationName: String, 
@@ -13,7 +15,8 @@ case class PrecipitationSample(
     MeasurementFlag: String, 
     QualityFlag: String
 )
-
+```
+```scala
 object dataset {
 
     val data="""STATION,STATION_NAME,ELEVATION,LATITUDE,LONGITUDE,DATE,HPCP,Measurement Flag,Quality Flag
@@ -21,11 +24,14 @@ object dataset {
   COOP:310301,ASHEVILLE NC US,682.1,35.5954,-82.5568,20100101 01:00,0,g,
   COOP:310301,ASHEVILLE NC US,682.1,35.5954,-82.5568,20100102 06:00,1, ,
 """
+```
 
+```scala
 // This function takes a header string and returns pascal header
 def headerToPascalCase(header: String) = header.split("[ _]+").map(_.toLowerCase.capitalize).mkString("")
+```
 
-
+```scala
 // This function takes a dataframe and headers string and returns a 
 def normalizeHeaders(df: DataFrame, headers: String): DataFrame = {
   val fieldNames = df.schema.fieldNames
@@ -41,14 +47,18 @@ def normalizeHeaders(df: DataFrame, headers: String): DataFrame = {
   }
   tempDF
 }
+```
 
+```scala
 // Function converts array(x) to tuple(x)
 def arrayToTuple(values: Array[String]) = values match {
   case Array(a,b,c,d,e,f,g,h,i) => (a,b,c,d,e,f,g,h,i)
   case Array(a,b,c,d,e,f,g,h) =>  (a,b,c,d,e,f,g,h, "")  // because "a,".split(",") returns Array(a) instead of Array(a, "")
   case _ => ("","","","","","","","","") // if not recognized, empty values
 }
+```
 
+```scala
 // Function takes a string and converts it to Dataset
 def convertToDataset(csvData: String): Dataset[PrecipitationSample] = {
     
@@ -66,3 +76,4 @@ def convertToDataset(csvData: String): Dataset[PrecipitationSample] = {
 }
 
 }
+```
