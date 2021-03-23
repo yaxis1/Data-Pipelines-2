@@ -22,6 +22,7 @@ object dataset {
   COOP:310301,ASHEVILLE NC US,682.1,35.5954,-82.5568,20100102 06:00,1, ,
 """
 
+// This function takes a header string and returns pascal header
 def headerToPascalCase(header: String) = header.split("[ _]+").map(_.toLowerCase.capitalize).mkString("")
 
 
@@ -31,7 +32,7 @@ def normalizeHeaders(df: DataFrame, headers: String): DataFrame = {
   val h = headers.split(",").toList
   var tempDF = df //This will be modified with renamed columns
   (0 to fieldNames.size - 1).foreach { i => 
-    // for each element in field names
+    // Updating dataframe for each element of column names
     val currentField = fieldNames(i)
     val currentHeader = h(i)
     val updatedFieldName = headerToPascalCase(currentHeader)
@@ -41,19 +42,21 @@ def normalizeHeaders(df: DataFrame, headers: String): DataFrame = {
   tempDF
 }
 
+// Function converts array(x) to tuple(x)
 def arrayToTuple(values: Array[String]) = values match {
   case Array(a,b,c,d,e,f,g,h,i) => (a,b,c,d,e,f,g,h,i)
   case Array(a,b,c,d,e,f,g,h) =>  (a,b,c,d,e,f,g,h, "")  // because "a,".split(",") returns Array(a) instead of Array(a, "")
   case _ => ("","","","","","","","","") // if not recognized, empty values
 }
-//Function takes a string and converts it to Dataset
 
+// Function takes a string and converts it to Dataset
 def convertToDataset(csvData: String): Dataset[PrecipitationSample] = {
     
-  //Converting string to list inorder to be able to split header from rows, also lists are great!
+  // Converting string to list inorder to be able to split header from rows, also lists are great!
   val headers :: rows = data.split("\n").toList
   var df = rows.map(_.split(",")).map(arrayToTuple).toDF
   df = normalizeHeaders(df, headers)
+  // Casting numerical columns to DoubleType
   df = df.withColumn("Elevation",col("Elevation").cast(DoubleType))
   df = df.withColumn("Latitude",col("Latitude").cast(DoubleType))
   df = df.withColumn("Longitude",col("Longitude").cast(DoubleType))
