@@ -79,7 +79,7 @@ def convertToDataset(csvData: String): Dataset[PrecipitationSample] = {
 ```
 
 
-```
+```image
 ![exercise1](https://user-images.githubusercontent.com/38083799/112084248-c4e3ab00-8b88-11eb-90a7-40e9dc1f1710.png)
 ```
 
