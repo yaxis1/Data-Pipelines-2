@@ -77,3 +77,6 @@ def convertToDataset(csvData: String): Dataset[PrecipitationSample] = {
 
 }
 ```
+
+![Test Image 1](C:\Users\verce\Pictures\exercise1.png)
+
