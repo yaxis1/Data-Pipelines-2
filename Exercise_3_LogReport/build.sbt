@@ -12,11 +12,4 @@ lazy val app = (project in file("."))
     libraryDependencies += scalaTest % "test",
   )
 
-assemblyOption in assembly := (assemblyOption in assembly).value
-  .copy(includeScala = false)
-assemblyJarName in assembly := "LogReporting-assembly-1.0.jar"
-
-assemblyMergeStrategy in assembly := {
-  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
-  case x                             => MergeStrategy.first
 }
