@@ -62,7 +62,8 @@ object weather_streaming{
         println("Schema for weather_deatail_df_5")
 
         weather_deatail_df_5.printSchema()
-
+        
+        // Writing result to console
         val weather_detail_write_stream = weather_deatail_df_5
             .writeStream 
             .trigger(Trigger.ProcessingTime(interval="10 Seconds"))
@@ -70,7 +71,8 @@ object weather_streaming{
             .option("truncate","false")
             .format(source = "console")
             .start()
-
+        
+        // Writing result to hdfs
         weather_deatail_df_5.writeStream
             .format(source="csv")
             .option("path", "pathtohdfs")
