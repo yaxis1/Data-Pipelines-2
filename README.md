@@ -72,3 +72,20 @@ sudo apt-get install sbt
  ```sh
  sbt package
  ```
+
+### Spark use case
+ Weather data needs to be imported from an open weather API that fetches data like temperature, humidity etc.
+ 
+ To process this a schema needs to be formulated in spark using SparkSession, then we import spark.sql.functions to make further processing on imported data. 
+ 
+ The package 'package streaming_scala' takes input from kafka producer - "kafka_weather_producer.py" - This producer contans an API that produces daily weather data. 
+ 
+ The scala package reads from KAFKA_BOOTSTRAP_SERVERS and is subscribed to KAFKA_TOPIC_NAME - "OpenWeather", - the package first casts the date column as DATETYPE and temperature as DOUBLE - Generates a dataframe out of it.
+ 
+ Necessary transformations are made and a final schema is generated. 
+ 
+#### Importing real time weather data into spark data frame
+ Schema:
+ ![image](https://user-images.githubusercontent.com/38083799/119366713-87e38400-bcb1-11eb-8670-381efda868b6.png)
+
+ The schema is now ready for input data
