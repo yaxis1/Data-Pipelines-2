@@ -12,4 +12,4 @@ lazy val app = (project in file("."))
     libraryDependencies += scalaTest % "test",
   )
 
-}
+
