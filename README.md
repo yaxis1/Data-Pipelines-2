@@ -4,11 +4,9 @@ This repository demonstrates several scala usecases and a glimpse into it's pote
 - Kafka
 - Spark
 
-## Features
-Check java version:
-```sh
-java -version
-```
+## Tree view
+![image](https://user-images.githubusercontent.com/38083799/119356231-7ba5f980-bca6-11eb-9cbe-712fd60e2c32.png)
+
 #### Install Kafka
 
 Adding confluent's public key
