@@ -10,8 +10,8 @@ object weather_streaming{
 
     def main(args: Array[String]): Unit = {
         val KAFKA_TOPIC_NAME = "Openweather"
-        val KAFKA_BOOTSTRAP_SERVERS = 'ipaddress:port'
-        System.setProperty("HADOOP_USER_NAME",'saif')
+        val KAFKA_BOOTSTRAP_SERVERS = '3.239.36.11:9092'
+        System.setProperty("HADOOP_USER_NAME",'ubuntu')
 
         val spark = SparkSession.builder.master(master="local[*]")
             .appName(name = "Weather Streaming")
