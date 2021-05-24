@@ -5,7 +5,7 @@ from json import dumps
 import requests
 
 KAFKA_TOPIC_NAME = "Openweather"
-KAFKA_BOOTSTRAP_SERVERS = 'ipaddress:port'
+KAFKA_BOOTSTRAP_SERVERS = '3.239.36.11:9092'
 
 
 
