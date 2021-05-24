@@ -72,5 +72,5 @@ sudo apt-get install sbt
 #### Generating a .jar out of projects:
  Move to project folder
  ```sh
- sbt project
+ sbt package
  ```
