@@ -48,7 +48,7 @@ kafka-console-producer --broker-list localhost:9092 --topic dsti
 ```sh
  kafka-console-consumer --zookeeper localhost:2181 --topic dsti --from-beginning
 ```
-The producer and consumer are running:
+The producer and consumer are running - this will be later implemented for KAFKA_TOPIC - Openweather
   ![image](https://user-images.githubusercontent.com/38083799/119328092-088b8b80-bc84-11eb-9f50-15c33348f2f0.png)
 
 #### Installing spark
