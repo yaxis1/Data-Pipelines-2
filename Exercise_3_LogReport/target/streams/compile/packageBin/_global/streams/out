@@ -1,0 +1,15 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/app_2.12-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/classes/App$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Log$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/classes/Log$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/classes/App.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App$$typecreator6$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/classes/App$$typecreator6$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	App$$typecreator10$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/classes/App$$typecreator10$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Log.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Data-Pipelines-2/Exercise_3_LogReport/target/scala-2.12/classes/Log.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
