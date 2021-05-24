@@ -3,7 +3,7 @@ name := 'weather_streaming'
 
 version := "1.0"
 
-scalaVersion :=
+scalaVersion := '2.12.12'
 
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.4.0"
 
