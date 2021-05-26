@@ -76,6 +76,9 @@ sudo apt-get install sbt
  ```
 
 ### Spark use case
+ 
+![image](https://user-images.githubusercontent.com/38083799/119735133-31767100-be7c-11eb-87ee-708ca760ce0f.png)
+
  Weather data needs to be imported from an open weather API that fetches data like temperature, humidity etc.
  
  To process this a schema needs to be formulated in spark using SparkSession, then we import spark.sql.functions to make further processing on imported data. 
